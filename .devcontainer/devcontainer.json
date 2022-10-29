@@ -21,7 +21,8 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "GitHub.copilot"
+        "GitHub.copilot",
+        "oderwat.indent-rainbow"
       ]
     }
   },
