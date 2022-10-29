@@ -1,4 +1,4 @@
-import { Container, Paper, Title, Header } from '@mantine/core';
+import { Container, Paper, Title } from '@mantine/core';
 import { NextPage } from 'next';
 
 const Page: NextPage = () => {
