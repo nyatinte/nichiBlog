@@ -1,0 +1,24 @@
+import { Button } from '@mantine/core';
+import { ArticleLayout } from 'components/layouts/ArticleLayout';
+
+export const meta = {
+  title: 'サンプル',
+  description: 'サンプルページです',
+  publishedAt: '2022-10-31',
+};
+
+# My MDX Page with a Layout
+
+This is a list in markdown:
+
+- One
+- Two
+- Three
+
+Checkout my React component:
+
+<Button>ボタンもクリックできるよ</Button>
+
+export default ({ children }) => (
+  <ArticleLayout meta={meta}>{children}</ArticleLayout>
+);
