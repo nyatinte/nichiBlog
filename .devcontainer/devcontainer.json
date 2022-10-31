@@ -2,7 +2,7 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/typescript-node
 {
   "name": "nichiBlog",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspaces/nichiBlog/",
   "build": {
     "dockerfile": "Dockerfile",
     // Update 'VARIANT' to pick a Node version: 18, 16, 14.
@@ -22,7 +22,8 @@
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "GitHub.copilot",
-        "oderwat.indent-rainbow"
+        "oderwat.indent-rainbow",
+        "unifiedjs.vscode-mdx"
       ]
     }
   },
