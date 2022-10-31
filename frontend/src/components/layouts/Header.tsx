@@ -1,4 +1,11 @@
-import { Burger, Container, createStyles, Group, Header } from '@mantine/core';
+import {
+  Box,
+  Burger,
+  Container,
+  createStyles,
+  Group,
+  Header,
+} from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -13,6 +20,13 @@ const useStyles = createStyles((theme) => ({
     height: '100%',
     backgroundColor: theme.colors.green[2],
     paddingBottom: theme.spacing.xs,
+    paddingRight: theme.spacing.xl,
+    paddingLeft: theme.spacing.xl,
+  },
+
+  logo: {
+    alignItems: 'center',
+    width: 170,
   },
 
   links: {
@@ -90,7 +104,9 @@ export const BlogHeader = ({ links }: HeaderSimpleProps) => {
   return (
     <Header height={'10vh'}>
       <Container fluid className={classes.header}>
-        <Logo />
+        <Box className={classes.logo}>
+          <Logo />
+        </Box>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
