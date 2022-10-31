@@ -1,8 +1,9 @@
-import { Box, Button, Container, SimpleGrid, Text } from '@mantine/core';
+import { ActionIcon, Container, SimpleGrid } from '@mantine/core';
 import { ArticleCard } from 'components/ArticleCard';
 import { globby } from 'globby';
 import { StaticImageData } from 'next/image';
 import { useMemo, useState } from 'react';
+import { ArrowsSort } from 'tabler-icons-react';
 
 export type article = {
   id: string;
@@ -39,12 +40,9 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
 
   return (
     <Container py="xl">
-      <Box>
-        <Button onClick={handleClickToggleOrder}>
-          {order === 'desc' ? '昇順' : '降順'}に並び替え
-        </Button>
-        <Text>現在の並び順: {order}</Text>
-      </Box>
+      <ActionIcon onClick={handleClickToggleOrder} size="lg" color="green">
+        <ArrowsSort size={30} />
+      </ActionIcon>
       <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         {cards}
       </SimpleGrid>
