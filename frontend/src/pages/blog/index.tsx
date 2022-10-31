@@ -22,7 +22,7 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
   const sortedMdxFilesMeta = useMemo(
     () =>
       mdxFilesMeta.sort((a, b) => {
-        if (order === 'desc') {
+        if (order === 'asc') {
           return new Date(a.date).getTime() - new Date(b.date).getTime();
         }
 
