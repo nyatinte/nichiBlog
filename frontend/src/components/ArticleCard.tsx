@@ -25,11 +25,14 @@ type ArticleCardProps = {
 export const ArticleCard = ({ article }: ArticleCardProps) => {
   const { classes } = useStyles();
 
+  const src =
+    typeof article.image === 'string' ? article.image : article.image?.src;
+
   return (
     <Link href={`/blog/${article.id}`} style={{ textDecoration: 'none' }}>
       <Card p="md" radius="md" className={classes.card}>
         <AspectRatio ratio={1920 / 1080}>
-          <Image src={article.image || NoImage.src} alt="article.image" />
+          <Image src={src || NoImage.src} alt="article.image" />
         </AspectRatio>
         <Text
           color="dimmed"

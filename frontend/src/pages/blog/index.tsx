@@ -1,24 +1,28 @@
-import { Container, SimpleGrid } from '@mantine/core';
+import { Box, Button, Container, SimpleGrid, Text } from '@mantine/core';
 import { ArticleCard } from 'components/ArticleCard';
 import { globby } from 'globby';
+import { StaticImageData } from 'next/image';
 import { useMemo, useState } from 'react';
 
 export type article = {
   id: string;
   title: string;
-  image?: string;
-  published: boolean;
   date: string;
+  image?: StaticImageData | string;
+  published: boolean;
 };
 
 const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
   // 昇順・降順の切り替え
   const [order, setOrder] = useState<'asc' | 'desc'>('desc');
+  const handleClickToggleOrder = () => {
+    setOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+  };
 
   const sortedMdxFilesMeta = useMemo(
     () =>
       mdxFilesMeta.sort((a, b) => {
-        if (order === 'asc') {
+        if (order === 'desc') {
           return new Date(a.date).getTime() - new Date(b.date).getTime();
         }
 
@@ -35,6 +39,12 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
 
   return (
     <Container py="xl">
+      <Box>
+        <Button onClick={handleClickToggleOrder}>
+          {order === 'desc' ? '昇順' : '降順'}に並び替え
+        </Button>
+        <Text>現在の並び順: {order}</Text>
+      </Box>
       <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         {cards}
       </SimpleGrid>
