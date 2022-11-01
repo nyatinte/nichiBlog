@@ -1,4 +1,4 @@
-import { ActionIcon, Container, SimpleGrid } from '@mantine/core';
+import { ActionIcon, Container, Pagination, SimpleGrid } from '@mantine/core';
 import { ArticleCard } from 'components/ArticleCard';
 import { globby } from 'globby';
 import { StaticImageData } from 'next/image';
@@ -16,6 +16,11 @@ export type article = {
 const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
   // 昇順・降順の切り替え
   const [order, setOrder] = useState<'asc' | 'desc'>('desc');
+  // ページネーション
+  const [page, setPage] = useState(1);
+  const fileLength = mdxFilesMeta.length;
+  const perPage = 6;
+  const totalPage = Math.ceil(fileLength / perPage);
   const handleClickToggleOrder = () => {
     setOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
   };
@@ -32,11 +37,13 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
     [mdxFilesMeta, order]
   );
 
-  const cards = sortedMdxFilesMeta.map((article) => {
-    if (article.published) {
-      return <ArticleCard key={article.id} article={article} />;
-    }
-  });
+  const cards = sortedMdxFilesMeta
+    .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
+    .map((article) => {
+      if (article.published) {
+        return <ArticleCard key={article.id} article={article} />;
+      }
+    });
 
   return (
     <Container py="xl">
@@ -46,6 +53,7 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
       <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         {cards}
       </SimpleGrid>
+      <Pagination total={totalPage} page={page} onChange={setPage} />
     </Container>
   );
 };
