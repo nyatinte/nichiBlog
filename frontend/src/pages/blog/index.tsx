@@ -21,9 +21,8 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
   const fileLength = mdxFilesMeta.length;
   const perPage = 6;
   const totalPage = Math.ceil(fileLength / perPage);
-  const handleClickToggleOrder = () => {
-    setOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
-  };
+  const start = (page - 1) * perPage;
+  const end = start + perPage;
 
   const sortedMdxFilesMeta = useMemo(
     () =>
@@ -37,13 +36,14 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
     [mdxFilesMeta, order]
   );
 
-  const cards = sortedMdxFilesMeta
-    .slice((page - 1) * perPage, (page - 1) * perPage + perPage)
-    .map((article) => {
-      if (article.published) {
-        return <ArticleCard key={article.id} article={article} />;
-      }
-    });
+  const handleClickToggleOrder = () => {
+    setOrder((prev) => (prev === 'asc' ? 'desc' : 'asc'));
+  };
+  const cards = sortedMdxFilesMeta.slice(start, end).map((article) => {
+    if (article.published) {
+      return <ArticleCard key={article.id} article={article} />;
+    }
+  });
 
   return (
     <Container py="xl">
