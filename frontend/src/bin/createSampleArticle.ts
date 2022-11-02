@@ -37,6 +37,16 @@ export default ({ children }) => (
   fs.writeFileSync(`./src/pages/blog/${id}.mdx`, template);
 };
 
-for (let i = 1; i < 21; i++) {
-  createArticle(`sample-${i}`, `サンプル記事${i}`);
-}
+const sleep = (msec: number) =>
+  new Promise((resolve) => setTimeout(resolve, msec));
+
+const createSampleArticles = async () => {
+  for (let i = 0; i < 20; i++) {
+    const id = `sample-${i}`;
+    const title = `サンプル記事 ${i}`;
+    createArticle(id, title);
+    await sleep(1000);
+  }
+};
+
+createSampleArticles();
