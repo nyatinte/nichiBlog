@@ -1,6 +1,6 @@
 import { Box, Container, createStyles, Divider, Title } from '@mantine/core';
-import { CircleDate } from 'components/CircleDate';
 import MDXCustomProvider from 'components/MDXCustomProvider';
+import { CircleDate } from 'components/uiParts/date/CircleDate';
 import type { article } from 'pages/blog';
 import { ReactNode } from 'react';
 
