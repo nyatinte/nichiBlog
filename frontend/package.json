@@ -16,6 +16,7 @@
     "@mantine/core": "^5.6.3",
     "@mantine/hooks": "^5.6.3",
     "@mantine/next": "^5.6.3",
+    "@mantine/prism": "^5.6.4",
     "@mdx-js/loader": "^2.1.5",
     "@mdx-js/react": "^2.1.5",
     "@next/mdx": "^13.0.0",
