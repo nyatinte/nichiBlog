@@ -7,9 +7,10 @@ import { ReactNode } from 'react';
 const useStyles = createStyles((theme) => ({
   root: {
     backgroundColor: '#f7fee7',
-    height: '100vh',
+    height: 'auto',
     width: '100%',
     paddingTop: theme.spacing.xl,
+    paddingBottom: theme.spacing.xl,
   },
   container: {
     backgroundColor: 'white',
