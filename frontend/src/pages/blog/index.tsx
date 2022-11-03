@@ -1,5 +1,5 @@
 import { ActionIcon, Container, Pagination, SimpleGrid } from '@mantine/core';
-import { ArticleCard } from 'components/ArticleCard';
+import { ArticleCard } from 'components/uiParts/card/ArticleCard';
 import { globby } from 'globby';
 import { StaticImageData } from 'next/image';
 import { useMemo, useState } from 'react';
