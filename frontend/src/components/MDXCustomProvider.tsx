@@ -4,13 +4,15 @@ import { ReactNode } from 'react';
 import { CodeBlock } from './uiParts/code/CodeBlock';
 import { SpaceDivider } from './uiParts/divider/spaceDivider';
 import { HeadingBox } from './uiParts/heading/HeadingBox';
-import { TooltipLink } from './uiParts/Link/PaddingLink';
+import { TooltipLink } from './uiParts/Link/TooltipLink';
+import { MDXCustomText } from './uiParts/text/MDXCustomText';
 
 const components = {
   code: CodeBlock,
   a: TooltipLink,
   hr: SpaceDivider,
   h2: HeadingBox,
+  p: MDXCustomText,
 };
 
 const MDXCustomProvider = ({ children }: { children: ReactNode }) => {

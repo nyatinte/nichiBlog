@@ -1,0 +1,50 @@
+import { ArticleLayout } from 'components/layouts/ArticleLayout';
+import { AlertCard } from 'components/uiParts/card/AlertCard';
+
+export const meta = {
+  id: 'e3ae4b02c52430bae7aecd1b',
+  title: 'shottrでスクショ効率化',
+  date: '2022-11-02 19:56:41',
+  image: 'https://shottr.cc/assets/logo.png',
+  published: true,
+};
+
+みなさんはスクショを撮るときにどうしていますか？
+多くの人が使っているのは、デフォルトのスクショ機能だと思います。僕もそうしていました。
+
+今回紹介するのは、スクショを撮るときに痒いところに手が届くようになる[Shottr](https://shottr.cc/)というサービスです。
+
+https://shottr.cc/
+
+<AlertCard title="注意">
+  2022/11/03現在、MacOSのみの対応となっています
+</AlertCard>
+
+## インストール
+
+[公式のサイト](https://shottr.cc/)上部にある「Download」ボタンからダウンロードできます。
+
+## 何ができるの？
+
+色々な機能が用意されていますが、その中でも特に便利だと感じたものを 3 つ抜粋して紹介します。
+
+### 1. ピン留めしてどこでも参照する
+
+スクショをしたあとの編集画面で、ピン留めボタンを押すと、ピン留めすることができます。
+ウィンドウを跨いで表示することができるのでメモにも使えます！
+デザインしたいコンポーネントの画像を VSCode にピン留めして、デザインをするとめちゃくちゃ捗ります！
+
+### 2. 簡単にサイズを取得
+
+rular を選択し、サイズを知りたい部分にカーソルを合わせることで簡単にサイズを取得できます。
+PX と PT の 2 つの単位に対応しており、地味に便利です。
+チームメンバーに「ここもう少し小さくして！」と要望を出すのにも使えそうです。
+
+### 3. ぼかし・消しゴム機能でプライバシーを守る
+
+スクショを共有しようと思ったら見せたくないものまで含まれていた…ということはありませんか？
+そんな時にぼかし・消しゴム機能を使えば、わざわざ画像編集ソフトを起動する必要がなくなります。
+
+export default ({ children }) => (
+  <ArticleLayout meta={meta}>{children}</ArticleLayout>
+);

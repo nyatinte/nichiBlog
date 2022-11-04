@@ -15,7 +15,8 @@ export const HeadingBox = ({ children, ...props }: HeadingBoxProps) => {
         backgroundColor: '#f4f4f4',
         borderLeft: 'solid 5px #7db4e6',
         borderBottom: 'solid 3px #d7d7d7',
-        marginTop: '1.5rem',
+        marginTop: '2rem',
+        marginBottom: '1rem',
         padding: '0.5rem 1rem',
       }}
       {...props}
