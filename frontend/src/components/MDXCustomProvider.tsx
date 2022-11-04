@@ -1,4 +1,5 @@
 import { MDXProvider } from '@mdx-js/react';
+import { MDXComponents } from 'mdx/types';
 import { ReactNode } from 'react';
 
 import { CodeBlock } from './uiParts/code/CodeBlock';
@@ -13,7 +14,7 @@ const components = {
   hr: SpaceDivider,
   h2: HeadingBox,
   p: MDXCustomText,
-};
+} as MDXComponents;
 
 const MDXCustomProvider = ({ children }: { children: ReactNode }) => {
   return <MDXProvider components={components}>{children}</MDXProvider>;
