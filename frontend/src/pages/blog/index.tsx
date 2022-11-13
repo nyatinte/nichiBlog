@@ -14,6 +14,7 @@ export type article = {
 };
 
 const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
+  console.log(mdxFilesMeta);
   // 昇順・降順の切り替え
   const [order, setOrder] = useState<'asc' | 'desc'>('desc');
   // ページネーション
@@ -71,12 +72,14 @@ export default Page;
 
 // .mdxファイルを読み込み、記事の情報を取得する
 export async function getStaticProps() {
-  const mdxFiles = await globby('src/pages/blog/*.mdx');
-  const mdxFilesName = mdxFiles.map((file) => file.split('/').pop());
+  const mdxFiles = await globby('src/pages/blog/**/*.mdx');
+  const mdxFilesName = mdxFiles.map((file) =>
+    file.replace('src/pages/blog/', '')
+  );
   const mdxFilesMeta = mdxFilesName.map(async (file) => {
     // jsonにundifinedが入っているとエラーになるので、nullを入れる
     try {
-      const { meta } = await import(`/${file}`);
+      const { meta } = await import(`./${file}`);
       if (meta) {
         return meta as article;
       }

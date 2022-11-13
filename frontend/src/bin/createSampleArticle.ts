@@ -34,7 +34,9 @@ export default ({ children }) => (
     console.error('既にファイルが存在しています');
     return false;
   }
-  fs.writeFileSync(`./src/pages/blog/${id}.mdx`, template);
+  fs.mkdirSync(`./src/pages/blog/${id}`, { recursive: true });
+  fs.writeFileSync(`./src/pages/blog/${id}/index.mdx`, template);
+  fs.mkdirSync(`./src/pages/blog/${id}/images`, { recursive: true });
 };
 
 const sleep = (msec: number) =>
