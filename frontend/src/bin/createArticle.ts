@@ -17,7 +17,7 @@ export const meta = {
   published: true,
 };
 
-# ${title}
+// ここから記事本文
 
 export default ({ children }) => (
   <ArticleLayout meta={meta}>{children}</ArticleLayout>
@@ -33,8 +33,10 @@ for (let i = 0; i < process.argv.length; i++) {
 const template = createTemplate(process.argv[2], process.argv[3]);
 
 // 上書き保存を防ぐために、ファイルが存在しない場合のみ保存する
-if (fs.existsSync(`./src/pages/blog/${process.argv[2]}.mdx`)) {
+if (fs.existsSync(`./src/pages/blog/${process.argv[2]}/index.mdx`)) {
   console.error('既にファイルが存在しています');
   process.exit(1);
 }
-fs.writeFileSync(`./src/pages/blog/${process.argv[2]}.mdx`, template);
+fs.mkdirSync(`./src/pages/blog/${process.argv[2]}`, { recursive: true });
+fs.writeFileSync(`./src/pages/blog/${process.argv[2]}/index.mdx`, template);
+fs.mkdirSync(`./src/pages/blog/${process.argv[2]}/images`, { recursive: true });
