@@ -9,12 +9,12 @@ const links = [
     link: '/',
   },
   {
-    label: 'blog',
+    label: 'Blog',
     link: '/blog',
   },
   {
-    label: 'edit',
-    link: '/edit',
+    label: 'Contact',
+    link: '/contact',
   },
 ];
 

@@ -7,8 +7,8 @@ import {
   Header,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 
 import { Logo } from './Logo';
 
@@ -43,7 +43,7 @@ const useStyles = createStyles((theme) => ({
 
   link: {
     display: 'block',
-    lineHeight: 1,
+    lineHeight: 2,
     padding: '8px 12px',
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
@@ -51,7 +51,7 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === 'dark'
         ? theme.colors.dark[0]
         : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
+    fontSize: theme.fontSizes.md,
     fontWeight: 500,
 
     '&:hover': {
@@ -80,25 +80,24 @@ interface HeaderSimpleProps {
 
 export const BlogHeader = ({ links }: HeaderSimpleProps) => {
   const router = useRouter();
+  const rootPath = router.pathname.split('/')[1];
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
       href={link.link}
       className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
+        [classes.linkActive]: `/${rootPath}` === link.link,
       })}
-      onClick={(event) => {
+      onClick={async (event) => {
         event.preventDefault();
-        setActive(link.link);
-        void router.push(link.link);
+        await router.push(link.link);
       }}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (
