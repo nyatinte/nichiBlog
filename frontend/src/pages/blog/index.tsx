@@ -53,7 +53,16 @@ const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
       <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
         {cards}
       </SimpleGrid>
-      <Pagination total={totalPage} page={page} onChange={setPage} />
+      <Pagination
+        total={totalPage}
+        page={page}
+        onChange={setPage}
+        color="green"
+        style={{
+          marginTop: '2rem',
+          justifyContent: 'center',
+        }}
+      />
     </Container>
   );
 };

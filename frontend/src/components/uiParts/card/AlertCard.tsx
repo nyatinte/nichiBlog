@@ -5,7 +5,11 @@ type AlertCardProps = {
   children?: React.ReactNode;
   title?: string;
 } & AlertProps;
-export const AlertCard = ({ title, children, ...props }: AlertCardProps) => {
+export const AlertCard = ({
+  title = '注意',
+  children,
+  ...props
+}: AlertCardProps) => {
   return (
     <Alert
       icon={<AlertCircle size={16} />}
