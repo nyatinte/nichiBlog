@@ -14,7 +14,6 @@ export type article = {
 };
 
 const Page = ({ mdxFilesMeta }: { mdxFilesMeta: article[] }) => {
-  console.log(mdxFilesMeta);
   // 昇順・降順の切り替え
   const [order, setOrder] = useState<'asc' | 'desc'>('desc');
   // ページネーション
