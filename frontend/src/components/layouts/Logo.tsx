@@ -8,7 +8,7 @@ export const Logo = () => {
     <Link href="/">
       <AspectRatio
         ratio={LogoImage.width / LogoImage.height}
-        style={{ width: '200px' }}
+        style={{ width: '150px' }}
       >
         <Image src={LogoImage} alt="article.image" />
       </AspectRatio>

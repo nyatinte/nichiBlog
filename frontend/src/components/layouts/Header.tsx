@@ -3,6 +3,7 @@ import {
   Burger,
   Container,
   createStyles,
+  Drawer,
   Group,
   Header,
 } from '@mantine/core';
@@ -10,6 +11,7 @@ import { useDisclosure } from '@mantine/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+import { DrawerContent } from './DrawerContent';
 import { Logo } from './Logo';
 
 const useStyles = createStyles((theme) => ({
@@ -72,6 +74,13 @@ const useStyles = createStyles((theme) => ({
         .color,
     },
   },
+  drawerDrawer: {
+    backgroundColor: theme.fn.rgba(theme.white, 0.8),
+  },
+  drawerTitle: {
+    marginRight: 'auto',
+    marginLeft: 'auto',
+  },
 }));
 
 interface HeaderSimpleProps {
@@ -81,7 +90,7 @@ interface HeaderSimpleProps {
 export const BlogHeader = ({ links }: HeaderSimpleProps) => {
   const router = useRouter();
   const rootPath = router.pathname.split('/')[1];
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
@@ -116,6 +125,22 @@ export const BlogHeader = ({ links }: HeaderSimpleProps) => {
           className={classes.burger}
           size="sm"
         />
+        <Drawer
+          opened={opened}
+          onClose={close}
+          title={<Logo />}
+          padding="xl"
+          overlayOpacity={0}
+          overlayBlur={0}
+          withCloseButton={false}
+          size="md"
+          classNames={{
+            drawer: classes.drawerDrawer,
+            title: classes.drawerTitle,
+          }}
+        >
+          <DrawerContent links={links} onClose={close} />
+        </Drawer>
       </Container>
     </Header>
   );
